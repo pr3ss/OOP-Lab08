@@ -6,7 +6,12 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -75,7 +80,13 @@ public class BadIOGUI {
 
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println( "Hello World" );                
+                try{
+                    final List<String> readed = Files.readAllLines(Path.of(PATH),Charset.defaultCharset());
+                    System.out.println(readed);
+                }catch(IOException e2) {
+                    JOptionPane.showMessageDialog(frame, e2, "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
             }
 
         });

@@ -80,7 +80,6 @@ public class Controller  {
             PrintStream writer = new PrintStream(this.file);
         ) {
             writer.print(str);
-            System.out.println(str);
         } catch (IOException e) {
             System.out.println(e);
         }
